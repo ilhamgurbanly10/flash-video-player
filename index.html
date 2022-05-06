@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta charset="utf-8">
+
+	<link rel="stylesheet" type="text/css" href="css/flash-video-player.css">
+	<link rel="stylesheet" type="text/css" href="font_awesome/css/font-awesome.min.css">
+
+	<title>Video player</title>
+
+	<style type="text/css">
+		
+		.title,
+		.text {
+			color: #1688c2;
+			text-align: center;
+			font-family: Verdana;
+		}
+
+		.title {
+			font-size: 20px;
+			line-height: 30px;
+			font-weight: bold;
+		}
+
+		.fl-video-player-main-con {
+			margin: 2rem auto 0;
+		}
+
+		@media (min-width: 992px) {
+
+			.title {
+				font-size: 30px;
+				line-height: 40px;
+			}
+
+		}
+
+	</style>
+
+</head>
+<body>
+
+
+	<p class="title">Flash Video Player</p>
+	<p class="text">By Ilham Gurbanly</p>
+
+	<!-- flash-video-player -->
+	<div class="fl-video-player-main-con" id="videoPlayer">
+		
+		<div class="fl-video-player-con">
+
+			<div class="fl-video-player-start">
+				<img src="images/video-player-bg.jpg" class="fl-video-player-start-bg-img">
+
+				<button type="button" class="fl-video-player-start-btn fl-video-player-big-btn">
+					<i class="fa fa-play"></i>
+				</button>
+
+			</div>
+
+			<!-- loading-animations -->
+			<div class="fl-video-player-loading fl-loading fl-hide">
+				
+				<div class="fl-video-player-loading-circle"></div>
+				<div class="fl-video-player-loading-circle"></div>
+				<div class="fl-video-player-loading-circle"></div>
+
+			</div>
+
+			<div class="fl-video-player-loading fl-paused fl-hide">
+
+				<div class="fl-video-player-loading-circles">
+
+					<div class="fl-video-player-loading-circle"></div>
+					<div class="fl-video-player-loading-circle"></div>
+
+				</div>	
+
+			</div>
+
+			<!-- the-end-of-loading-animations -->
+
+			<video class="fl-video-player-video" src="videos/video_01.mp4"></video>
+
+			<p class="fl-video-player-title">Feride Hilal Akın - Gizli Aşk</p>
+
+			<div class="fl-video-player-big-buttons">
+
+				<button type="button" class="fl-video-player-backward-btn fl-video-player-big-btn">
+					<i class="fa fa-backward"></i>
+				</button>
+
+				<button type="button" class="fl-video-player-big-play-btn fl-video-player-big-btn">
+					<i class="fa fa-pause"></i>
+				</button>
+
+				<button type="button" class="fl-video-player-forward-btn fl-video-player-big-btn">
+					<i class="fa fa-forward"></i>
+				</button>
+
+			</div>
+
+			<button type="button" class="fl-video-player-lock-btn fl-video-player-btn">
+				<i class="fa fa-unlock"></i>
+			</button>
+			
+		</div>
+
+		<!-- controlbar -->
+		<div class="fl-video-player-controlbar">
+
+			<input class="fl-video-player-timeline" type="range" min="0" max="100" value="0" step="1" orient="vertical" />
+
+			<!-- <div class="fl-video-player-timeline">
+				<div class="fl-video-player-past-time"></div>
+			</div> -->
+
+			<button type="button" class="fl-video-player-play-btn fl-video-player-btn">
+				<i class="fa fa-pause"></i>
+			</button>
+
+			<div class="fl-video-player-volume-con">  
+
+				<button class="fl-video-player-volume-btn fl-video-player-btn">
+					<i class="fa fa-volume-down"></i>
+				</button>
+
+				<div class="fl-video-player-volume-line-con">
+
+					<div class="fl-video-player-volume-line">
+
+						<input class="fl-video-player-volume-slider" type="range" min="0" max="100" value="30" step="1" orient="vertical" />
+
+					</div>
+
+				</div>
+
+				<div class="fl-video-player-volume-number">9</div>
+
+			</div>
+
+			<div class="fl-video-player-time-con">
+
+				<span class="fl-video-player-current-time">00:00:00</span>
+				<span> / </span>
+				<span class="fl-video-player-full-time">00:00:00</span>
+
+			</div>
+
+			<div class="fl-video-player-speed-con">
+
+				<button type="button" class="fl-video-player-speed-toggler fl-video-player-btn">
+					<i class="fa fa-tachometer"></i>
+				</button>
+
+				<div class="fl-video-player-speed-buttons-con">
+
+					<button type="button" class="fl-video-player-speed-btn" data="0.5">0.5x</button>
+					<button type="button" class="fl-video-player-speed-btn fl-active" data="1">1x</button>
+					<button type="button" class="fl-video-player-speed-btn" data="1.25">1.25x</button>
+					<button type="button" class="fl-video-player-speed-btn" data="1.5">1.5x</button>
+					<button type="button" class="fl-video-player-speed-btn" data="2">2x</button>
+
+				</div>
+
+			</div>
+
+			<div class="fl-video-player-quality-con">
+
+				<button type="button" class="fl-video-player-quality-toggler fl-video-player-btn">
+					<i class="fa fa-gear"></i>
+					<span class="fl-video-player-selected-quality">480p</span>
+				</button>
+
+				<div class="fl-video-player-quality-buttons-con">
+
+					<button type="button" class="fl-video-player-quality-btn">144p</button>
+					<button type="button" class="fl-video-player-quality-btn fl-active" disabled="">240p</button>
+					<button type="button" class="fl-video-player-quality-btn">360p</button>
+					<button type="button" class="fl-video-player-quality-btn">480p</button>
+					<button type="button" class="fl-video-player-quality-btn">720p</button>
+
+				</div>
+
+			</div>
+
+			<button type="button" class="fl-video-player-full-screen-btn fl-video-player-btn">
+				<i class="fa fa-expand"></i>
+			</button>
+
+			<button type="button" class="fl-video-player-exit-full-screen-btn fl-video-player-btn">
+				<i class="fa fa-compress"></i>
+			</button>
+
+		</div>
+		<!-- the-end-of-controlbar -->
+
+	</div>
+	<!-- the-end-of-flash-video-player -->
+
+	<script type="text/javascript" src="js/flash-video-player.js"></script>
+
+</body>
+</html>
