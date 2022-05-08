@@ -134,6 +134,10 @@ function flashVideoPlayer(el, settings = {
 
 		readyToPause();
 
+		el.addEventListener('mousemove', showElements);
+
+		toggleElements();
+
 	}
 
 	const replay = () => { video.currentTime = 0; video.play(); readyToPause(); }
@@ -420,7 +424,7 @@ function flashVideoPlayer(el, settings = {
 			el.addEventListener('mousemove', showElements);
 			clearTimeout(myFunction);
 
-		}, 5000);
+		}, 8000);
 
 		el.removeEventListener('mousemove', showElements);
 
@@ -441,13 +445,6 @@ function flashVideoPlayer(el, settings = {
 			bigButtonsCon.classList.toggle('fl-show');
 			title.classList.toggle('fl-show');
 			clearTimeout(myFunction);
-			
-
-			// if (window.innerWidth > 991) {
-
-			// 		if(controlbar.classList.contains('fl-show')) showElements();
-
-			// } else {
 
 			if(controlbar.classList.contains('fl-show')) {
 				
@@ -455,8 +452,6 @@ function flashVideoPlayer(el, settings = {
 				hideAfter();
 
 			} else { el.addEventListener('mousemove', showElements); }	
-
-			// }
 
 		}
 
@@ -484,7 +479,7 @@ function flashVideoPlayer(el, settings = {
 				clearTimeout(mySecondFunction);
 				el.addEventListener('mousemove', showElements);
 
-			}, 5000);	
+			}, 8000);	
 
 		}	
 
