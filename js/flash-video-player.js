@@ -1,11 +1,4 @@
 
-
-const videoPlayer = document.querySelector('#videoPlayer');
-
-flashVideoPlayer(videoPlayer, {
-	infinite: true
-});
-
 function flashVideoPlayer(el, settings = {
 	infinite: false,
 	lockScreen: true
@@ -147,14 +140,9 @@ function flashVideoPlayer(el, settings = {
 
 	const isLoading = () => { loading.classList.remove('fl-hide'); startCon.classList.add('fl-hide'); }
 
-	const isNotLoading = () => {  
+	const isNotLoading = () => { loading.classList.add('fl-hide'); }	
 
-		loading.classList.add('fl-hide');
-		video.removeEventListener('playing', isNotLoading);
-
-	}	
-
-	const loadingProcess = () => { video.readyState != 4 ? isLoading() : isNotLoading(); }
+	const loadingProcess = () => { video.readyState >= 3 ? isNotLoading() : isLoading(); }
 
 	const fullScreen = () => {
 		
@@ -205,6 +193,7 @@ function flashVideoPlayer(el, settings = {
 
 		lockScreenBtn.removeEventListener('click', lock);
 		lockScreenBtn.addEventListener('click', unlock);
+		lockScreenBtn.classList.add('is-unlock-btn');
 
 	}
 
@@ -222,12 +211,9 @@ function flashVideoPlayer(el, settings = {
 
 		lockScreenBtn.addEventListener('click', lock);
 		lockScreenBtn.removeEventListener('click', unlock);
+		lockScreenBtn.classList.remove('is-unlock-btn');
 
 	}
-
-	// const isPaused = () => { if (video.readyState != 4) paused.classList.remove('fl-hide'); }
-
-	// const isNotPaused = () => { if (video.readyState == 4) loading.classList.add('fl-hide'); }
 
 	const setFullTime = () => {
 
@@ -455,14 +441,22 @@ function flashVideoPlayer(el, settings = {
 			bigButtonsCon.classList.toggle('fl-show');
 			title.classList.toggle('fl-show');
 			clearTimeout(myFunction);
-			el.addEventListener('mousemove', showElements);
+			
 
-			if (window.innerWidth <= 991) {
+			// if (window.innerWidth > 991) {
 
+			// 		if(controlbar.classList.contains('fl-show')) showElements();
+
+			// } else {
+
+			if(controlbar.classList.contains('fl-show')) {
+				
 				clearTimeout(mySecondFunction);
-				hideAfter();	
+				hideAfter();
 
-			}	
+			} else { el.addEventListener('mousemove', showElements); }	
+
+			// }
 
 		}
 
@@ -486,7 +480,9 @@ function flashVideoPlayer(el, settings = {
 				controlbar.classList.remove('fl-show');
 				lockScreenBtn.classList.remove('fl-show');
 				bigButtonsCon.classList.remove('fl-show');
+				title.classList.remove('fl-show');
 				clearTimeout(mySecondFunction);
+				el.addEventListener('mousemove', showElements);
 
 			}, 5000);	
 
